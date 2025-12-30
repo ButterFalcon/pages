@@ -283,18 +283,18 @@ nav a.active::after {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--primary-color);
+    background: #000;
     color: var(--white);
     padding: 0.6rem 1.2rem;
     border-radius: 6px;
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: background 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .web-badge:hover {
-    background: var(--accent-color);
+    opacity: 0.8;
 }
 
 .web-badge svg {
