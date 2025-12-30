@@ -1,0 +1,402 @@
+/* ==========================================================================
+   ButterFalcon - Shared Styles
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CSS Variables & Reset
+   ========================================================================== */
+:root {
+    --primary-color: #2C3E50;
+    --accent-color: #E67E22;
+    --bg-color: #F5F6FA;
+    --white: #ffffff;
+    --shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2. Typography
+   ========================================================================== */
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    line-height: 1.6;
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   3. Layout
+   ========================================================================== */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+main {
+    padding: 4rem 0;
+}
+
+/* ==========================================================================
+   4. Header & Navigation
+   ========================================================================== */
+header {
+    background-color: var(--white);
+    padding: 1rem 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+/* Navigation */
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    display: block;
+    background: var(--primary-color);
+    height: 2px;
+    width: 24px;
+    border-radius: 2px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+}
+
+.nav-toggle-label span::before {
+    top: -7px;
+}
+
+.nav-toggle-label span::after {
+    top: 7px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--accent-color);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   5. Company Info (index.html)
+   ========================================================================== */
+.company-info {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    box-shadow: var(--shadow);
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.info-table th,
+.info-table td {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.info-table th {
+    width: 25%;
+    text-align: left;
+    vertical-align: top;
+}
+
+.business-description {
+    margin-top: 2rem;
+}
+
+.business-description ul {
+    list-style: none;
+}
+
+.business-description li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.business-description li::before {
+    content: "\2022";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+}
+
+/* ==========================================================================
+   6. Apps Page (apps.html)
+   ========================================================================== */
+.page-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #666;
+}
+
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.app-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.app-icon {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1.5rem;
+    object-fit: cover;
+}
+
+.app-card h2 {
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.app-description {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* Store Badges */
+.app-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.store-badge {
+    display: inline-block;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.store-badge:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.store-badge img {
+    height: 40px;
+    width: auto;
+}
+
+/* Web App Button */
+.web-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.web-badge:hover {
+    background: var(--accent-color);
+}
+
+.web-badge svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ==========================================================================
+   7. Footer
+   ========================================================================== */
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+footer p {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   8. Responsive
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Mobile Navigation */
+    .nav-toggle-label {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        background: var(--white);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.3s ease;
+    }
+
+    .nav-toggle:checked ~ nav {
+        transform: scaleY(1);
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+    }
+
+    nav li {
+        text-align: center;
+    }
+
+    nav a {
+        display: block;
+        padding: 1rem 2rem;
+    }
+
+    nav a::after {
+        display: none;
+    }
+
+    /* Hamburger Animation */
+    .nav-toggle:checked ~ .nav-toggle-label span {
+        background: transparent;
+    }
+
+    .nav-toggle:checked ~ .nav-toggle-label span::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    .nav-toggle:checked ~ .nav-toggle-label span::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    /* Table Responsive */
+    .info-table th,
+    .info-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .info-table th {
+        padding-bottom: 0.5rem;
+    }
+
+    .info-table td {
+        padding-top: 0.5rem;
+    }
+
+    /* Apps Grid */
+    .apps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .company-info {
+        padding: 2rem 1.5rem;
+    }
+}

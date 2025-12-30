@@ -4,144 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ButterFalcon - 会社概要</title>
-    <style>
-        :root {
-            --primary-color: #2C3E50;
-            --accent-color: #E67E22;
-            --bg-color: #F5F6FA;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            line-height: 1.6;
-            color: var(--primary-color);
-            background-color: var(--bg-color);
-        }
-        
-        header {
-            background-color: white;
-            padding: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        
-        .logo span {
-            color: var(--accent-color);
-        }
-        
-        main {
-            padding: 4rem 0;
-        }
-        
-        .company-info {
-            background: white;
-            border-radius: 8px;
-            padding: 3rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .info-table th,
-        .info-table td {
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .info-table th {
-            width: 25%;
-            text-align: left;
-            vertical-align: top;
-        }
-        
-        .business-description {
-            margin-top: 2rem;
-        }
-        
-        .business-description h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .business-description ul {
-            list-style: none;
-        }
-        
-        .business-description li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-        
-        .business-description li::before {
-            content: "•";
-            color: var(--accent-color);
-            position: absolute;
-            left: 0;
-        }
-        
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 0;
-            margin-top: 4rem;
-        }
-        
-        footer p {
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 768px) {
-            .info-table th,
-            .info-table td {
-                display: block;
-                width: 100%;
-            }
-            
-            .info-table th {
-                padding-bottom: 0.5rem;
-            }
-            
-            .info-table td {
-                padding-top: 0.5rem;
-            }
-        }
-    </style>
+    <meta name="description" content="ButterFalconはWebアプリケーション開発、クラウドインフラ構築、DXコンサルティングを提供する東京の企業です。">
+    <link rel="canonical" href="https://butterfalcon.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://butterfalcon.com/">
+    <meta property="og:title" content="ButterFalcon - 会社概要">
+    <meta property="og:description" content="ButterFalconはWebアプリケーション開発、クラウドインフラ構築、DXコンサルティングを提供する東京の企業です。">
+    <meta property="og:locale" content="ja_JP">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="logo">Butter<span>Falcon</span></div>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Butter<span>Falcon</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">会社概要</a></li>
+                    <li><a href="apps.html">アプリ</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
-    
+
     <main>
         <div class="container">
             <div class="company-info">
@@ -164,7 +52,7 @@
                         <td>Email: info@butterfalcon.com</td>
                     </tr>
                 </table>
-                
+
                 <div class="business-description">
                     <h2>事業内容</h2>
                     <ul>
@@ -177,7 +65,7 @@
             </div>
         </div>
     </main>
-    
+
     <footer>
         <div class="container">
             <p>&copy; 2025 ButterFalcon All Rights Reserved.</p>
