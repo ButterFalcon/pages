@@ -1,16 +1,24 @@
 /* ==========================================================================
-   ButterFalcon - Shared Styles
+   ButterFalcon - Design System
    ========================================================================== */
 
 /* ==========================================================================
    1. CSS Variables & Reset
    ========================================================================== */
 :root {
-    --primary-color: #2C3E50;
-    --accent-color: #E67E22;
-    --bg-color: #F5F6FA;
+    --primary-color: #1a1a19;
+    --primary-light: #3d3d3a;
+    --accent-color: #c4704a;
+    --accent-hover: #d97757;
+    --accent-warm: #e8c4a0;
+    --bg-color: #faf9f7;
+    --bg-section: #f3f1ed;
     --white: #ffffff;
-    --shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --text-secondary: #6b6b66;
+    --text-muted: #9a9a93;
+    --border-color: rgba(26, 26, 25, 0.08);
+    --shadow: 0 1px 3px rgba(26, 26, 25, 0.04);
+    --shadow-lg: 0 4px 12px rgba(26, 26, 25, 0.06);
     --border-radius: 8px;
 }
 
@@ -20,25 +28,37 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
 /* ==========================================================================
    2. Typography
    ========================================================================== */
 body {
-    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    line-height: 1.8;
     color: var(--primary-color);
     background-color: var(--bg-color);
+    -webkit-font-smoothing: antialiased;
 }
 
 h1 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
+    font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
 }
 
 /* ==========================================================================
@@ -50,17 +70,29 @@ h2 {
     padding: 0 2rem;
 }
 
-main {
-    padding: 4rem 0;
+section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-size: 0.95rem;
 }
 
 /* ==========================================================================
    4. Header & Navigation
    ========================================================================== */
 header {
-    background-color: var(--white);
+    background-color: var(--bg-color);
     padding: 1rem 0;
-    box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -73,14 +105,15 @@ header {
 }
 
 .logo {
-    font-size: 1.75rem;
-    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: 600;
     color: var(--primary-color);
     text-decoration: none;
+    letter-spacing: 0.01em;
 }
 
 .logo span {
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 /* Navigation */
@@ -103,7 +136,7 @@ header {
     width: 24px;
     border-radius: 2px;
     position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .nav-toggle-label span::before,
@@ -127,17 +160,17 @@ nav ul {
 }
 
 nav a {
-    color: var(--primary-color);
+    color: var(--text-secondary);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 0.95rem;
     padding: 0.5rem 0;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
 }
 
-nav a:hover,
-nav a.active {
-    color: var(--accent-color);
+nav a:hover {
+    color: var(--primary-color);
 }
 
 nav a::after {
@@ -146,179 +179,290 @@ nav a::after {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 2px;
-    background: var(--accent-color);
-    transition: width 0.3s ease;
+    height: 1px;
+    background: var(--primary-color);
+    transition: width 0.2s ease;
 }
 
-nav a:hover::after,
-nav a.active::after {
+nav a:hover::after {
     width: 100%;
 }
 
 /* ==========================================================================
-   5. Company Info (index.html)
+   5. Featured Apps Section
    ========================================================================== */
-.company-info {
-    background: var(--white);
-    border-radius: var(--border-radius);
-    padding: 3rem;
-    box-shadow: var(--shadow);
-}
-
-.info-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.info-table th,
-.info-table td {
-    padding: 1.5rem;
-    border-bottom: 1px solid #eee;
-}
-
-.info-table th {
-    width: 25%;
-    text-align: left;
-    vertical-align: top;
-}
-
-.business-description {
-    margin-top: 2rem;
-}
-
-.business-description ul {
-    list-style: none;
-}
-
-.business-description li {
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.business-description li::before {
-    content: "\2022";
-    color: var(--accent-color);
-    position: absolute;
-    left: 0;
-}
-
-/* ==========================================================================
-   6. Apps Page (apps.html)
-   ========================================================================== */
-.page-intro {
-    text-align: center;
-    margin-bottom: 3rem;
-    color: #666;
-}
-
-.apps-grid {
+.featured-apps-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 }
 
-.app-card {
+.featured-card {
     background: var(--white);
     border-radius: var(--border-radius);
-    padding: 2rem;
-    box-shadow: var(--shadow);
+    padding: 2.5rem;
+    border: 1px solid var(--border-color);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 2rem;
+    align-items: flex-start;
+    transition: border-color 0.2s ease;
 }
 
-.app-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+.featured-card:hover {
+    border-color: rgba(26, 26, 25, 0.16);
 }
 
-.app-icon {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 1.5rem;
+.featured-card .app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 18px;
+    flex-shrink: 0;
     object-fit: cover;
 }
 
-.app-card h2 {
-    margin-bottom: 0.75rem;
+.featured-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.featured-card h3 {
     font-size: 1.25rem;
+    margin-bottom: 0.5rem;
 }
 
-.app-description {
-    color: #666;
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
+.featured-card .app-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
 }
 
-/* Store Badges */
-.app-badges {
+.featured-card .app-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
+    gap: 0.5rem;
 }
 
+/* ==========================================================================
+   7. Other Apps Accordion
+   ========================================================================== */
+.other-apps-accordion {
+    margin-top: 3rem;
+}
+
+.other-apps-accordion summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 1rem 0;
+    list-style: none;
+}
+
+.other-apps-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.other-apps-accordion summary::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--text-secondary);
+    border-bottom: 2px solid var(--text-secondary);
+    transform: rotate(-45deg);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.other-apps-accordion[open] summary::before {
+    transform: rotate(45deg);
+}
+
+.other-apps-accordion .other-apps-list {
+    padding-top: 0.5rem;
+}
+
+.other-apps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.other-app-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 1.5rem 2rem;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: border-color 0.2s ease;
+}
+
+.other-app-card:hover {
+    border-color: rgba(26, 26, 25, 0.16);
+}
+
+.other-app-card .app-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.other-app-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.other-app-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+}
+
+.other-app-card .app-description {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.other-app-card .app-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   8. Store Badges (shared)
+   ========================================================================== */
 .store-badge {
     display: inline-block;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.2s ease;
 }
 
 .store-badge:hover {
-    opacity: 0.8;
-    transform: scale(1.05);
+    opacity: 0.7;
 }
 
 .store-badge img {
-    height: 40px;
+    height: 36px;
     width: auto;
+}
+
+.other-app-card .store-badge img {
+    height: 30px;
 }
 
 /* Web App Button */
 .web-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: #000;
+    justify-content: center;
+    gap: 0.4rem;
+    background: var(--primary-color);
     color: var(--white);
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
+    height: 36px;
+    padding: 0 0.4rem;
+    border-radius: 4px;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    transition: opacity 0.3s ease;
+    transition: background 0.2s ease;
+    box-sizing: border-box;
+}
+
+.other-app-card .web-badge {
+    height: 30px;
+    font-size: 0.75rem;
 }
 
 .web-badge:hover {
-    opacity: 0.8;
+    background: var(--primary-light);
 }
 
 .web-badge svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
 }
 
 /* ==========================================================================
-   7. Footer
+   9. Company Info Section
+   ========================================================================== */
+#about {
+    background-color: var(--bg-section);
+}
+
+.company-description {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.company-info {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.info-list {
+    list-style: none;
+}
+
+.info-list li {
+    display: flex;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-list li:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    width: 120px;
+    flex-shrink: 0;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.info-value {
+    font-size: 0.95rem;
+}
+
+.info-value a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.info-value a:hover {
+    color: var(--accent-hover);
+}
+
+/* ==========================================================================
+   10. Footer
    ========================================================================== */
 footer {
     background-color: var(--primary-color);
-    color: var(--white);
-    padding: 2rem 0;
-    margin-top: 4rem;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 3rem 0;
 }
 
 footer p {
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 /* ==========================================================================
-   8. Responsive
+   11. Responsive — 768px
    ========================================================================== */
 @media (max-width: 768px) {
     /* Mobile Navigation */
@@ -331,11 +475,11 @@ footer p {
         left: 0;
         right: 0;
         top: 100%;
-        background: var(--white);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        background: var(--bg-color);
+        border-bottom: 1px solid var(--border-color);
         transform: scaleY(0);
         transform-origin: top;
-        transition: transform 0.3s ease;
+        transition: transform 0.2s ease;
     }
 
     .nav-toggle:checked ~ nav {
@@ -376,27 +520,85 @@ footer p {
         transform: rotate(-45deg);
     }
 
-    /* Table Responsive */
-    .info-table th,
-    .info-table td {
-        display: block;
-        width: 100%;
-    }
-
-    .info-table th {
-        padding-bottom: 0.5rem;
-    }
-
-    .info-table td {
-        padding-top: 0.5rem;
-    }
-
-    /* Apps Grid */
-    .apps-grid {
+    /* Featured Apps */
+    .featured-apps-grid {
         grid-template-columns: 1fr;
     }
 
-    .company-info {
-        padding: 2rem 1.5rem;
+    .featured-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .featured-card .app-badges {
+        justify-content: center;
+    }
+
+    /* Other Apps */
+    .other-app-card {
+        flex-wrap: wrap;
+    }
+
+    .other-app-card .app-badges {
+        width: 100%;
+        padding-left: calc(64px + 1.5rem);
+    }
+
+    /* Company Info */
+    .info-list li {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .info-label {
+        width: auto;
+    }
+}
+
+/* ==========================================================================
+   12. Responsive — 480px
+   ========================================================================== */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    section {
+        padding: 3.5rem 0;
+    }
+
+    .featured-card {
+        padding: 1.5rem;
+    }
+
+    .featured-card .app-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+    }
+
+    .other-app-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.25rem;
+    }
+
+    .other-app-card .app-badges {
+        padding-left: 0;
+    }
+
+    .store-badge img {
+        height: 32px;
+    }
+
+    .other-app-card .store-badge img {
+        height: 28px;
+    }
+
+    .other-app-card .web-badge {
+        height: 28px;
     }
 }
