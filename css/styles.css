@@ -197,6 +197,13 @@ nav a:hover::after {
     gap: 2rem;
 }
 
+.featured-apps-grid .featured-card:first-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    max-width: calc(50% - 1rem);
+}
+
 .featured-card {
     background: var(--white);
     border-radius: var(--border-radius);
@@ -523,6 +530,10 @@ footer p {
     /* Featured Apps */
     .featured-apps-grid {
         grid-template-columns: 1fr;
+    }
+
+    .featured-apps-grid .featured-card:first-child {
+        max-width: 100%;
     }
 
     .featured-card {
